@@ -1,5 +1,3 @@
-package ssafy.Atype;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -10,10 +8,10 @@ public class Main {
 
     static class Sushi{
 
-        long t;
+        int t;
         String name;
 
-        public Sushi(long t, String name) {
+        public Sushi(int t, String name) {
             this.t = t;
             this.name = name;
         }
@@ -31,16 +29,16 @@ public class Main {
         }
     }
 
-    static long L, Q;
+    static int L, Q;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
 
-        L = Long.parseLong(st.nextToken());
-        Q = Long.parseLong(st.nextToken());
+        L = Integer.parseInt(st.nextToken());
+        Q = Integer.parseInt(st.nextToken());
 
-        ArrayList<Sushi>[] rotating = new ArrayList[(int)L];
+        ArrayList<Sushi>[] rotating = new ArrayList[L];
 
         for (int i=0; i<L; i++){
             rotating[i] = new ArrayList<>();
@@ -54,7 +52,7 @@ public class Main {
 
             int input = Integer.parseInt(st.nextToken());
 
-            long t = Long.parseLong(st.nextToken()); // 동작의 시간
+            int t = Integer.parseInt(st.nextToken()); // 동작의 시간
 
             for (int i=0; i<rotating.length; i++){
                 ArrayList<Sushi> spot = new ArrayList<>(rotating[i]);
@@ -62,8 +60,8 @@ public class Main {
                 for (Sushi s : spot){
                     // 다음 초밥의 위치 = 현재 위치 + (현재 시간 - 놓였던 시간)
 
-                    for (long time=s.t; time<=t; time++) {
-                        int nextIndex = (int)(i + (t - s.t));
+                    for (int time=s.t; time<=t; time++) {
+                        int nextIndex = i + (t - s.t);
 
                         // 만약 다음 칸이 끝을 넘는다면, 0부터 다시 세줘야 함
                         if (nextIndex >= L) {
